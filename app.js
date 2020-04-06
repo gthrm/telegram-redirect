@@ -4,13 +4,14 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const http = require('http');
-const serverPort = 3460;
+const serverPort = 80;
 
 const app = express();
 app.use(bodyParser.json());
 app.use(cors({ origin: '*' }));
 
 app.get('/:id', (req, res) => {
+    console.log(`https://t.me/${req.params.id}?${req.query.start}`);
     send(req)
         .then(
             data => console.log('data', data) || res.send(data.data)
